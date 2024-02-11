@@ -39,9 +39,15 @@ dependencies = [
 test = [
     "pytest >=7.4.0",
     "pytest-cov >=3.0.0",
+    "jupyter",
+    "notebook",
+    "ipykernel",
+    "ipython",
     "pre-commit",
     "mypy >=1.4.1",
     "pip-tools",
+    "types-requests",
+    "types-PyYAML",
 ]
 
 

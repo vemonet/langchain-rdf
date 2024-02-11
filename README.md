@@ -30,15 +30,18 @@ pip install git+https://github.com/vemonet/langchain-rdf.git
 
 ### 🐍 Use with python
 
- Use this package in python scripts:
+Use this package in python scripts:
 
- ```python
+```python
 from langchain_rdf import OntologyLoader
 
 loader = OntologyLoader("https://semanticscience.org/ontology/sio.owl", format="xml")
 documents = loader.load()
 print(documents)
- ```
+```
+
+> [!TIP]
+> Checkout [this notebook](https://github.com/vemonet/langchain-rdf/blob/main/tests/langchain_rag.ipynb) for a complete example of Retrieval Augmented Generation (RAG) with conversation memory, using open source components, running locally.
 
 ## 🧑‍💻 Development setup
 
