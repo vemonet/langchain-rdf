@@ -1,4 +1,4 @@
-from typing import Any, List
+from typing import Any, List, Optional
 
 from langchain_community.document_loaders.base import BaseLoader
 from langchain_core.documents import Document
@@ -10,23 +10,24 @@ class OntologyLoader(BaseLoader):
     Load an OWL ontology and extract classes and properties as documents.
     """
 
-    def __init__(self, ontology_url: str):
+    def __init__(self, ontology_url: str, format: Optional[str] = None):
         """
         Initialize the OntologyLoader.
 
         Args:
             ontology_url (str): URL of the OWL ontology to be loaded.
+            format (str): FOrmat of the OWL ontology to be loaded.
         """
         self.ontology_url = ontology_url
+        self.format = format
         self.graph = Graph(store="Oxigraph")
 
     def load(self) -> List[Document]:
         """Load and return documents (classes and properties) from the OWL ontology."""
-        try:
+        if self.format:
+            self.graph.parse(self.ontology_url, format=self.format)
+        else:
             self.graph.parse(self.ontology_url)
-        except Exception as e:
-            print(f"Default parsing of {self.ontology_url} failed, trying with XML parser: {e}")
-            self.graph.parse(self.ontology_url, format="xml")
 
         # Extract classes and properties as documents
         docs: List[Document] = []

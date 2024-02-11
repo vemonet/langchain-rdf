@@ -35,7 +35,7 @@ pip install git+https://github.com/vemonet/langchain-rdf.git
  ```python
 from langchain_rdf import OntologyLoader
 
-loader = OntologyLoader("https://semanticscience.org/ontology/sio.owl")
+loader = OntologyLoader("https://semanticscience.org/ontology/sio.owl", format="xml")
 documents = loader.load()
 print(documents)
  ```
