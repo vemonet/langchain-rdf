@@ -41,7 +41,7 @@ print(documents)
 ```
 
 > [!TIP]
-> Checkout [this notebook](https://github.com/vemonet/langchain-rdf/blob/main/tests/langchain_rag.ipynb) for a complete example of Retrieval Augmented Generation (RAG) with conversation memory, using open source components, running locally.
+> Checkout [this notebook](https://github.com/vemonet/langchain-rdf/blob/main/tests/rag_ontology.ipynb) for a complete example of Retrieval Augmented Generation (RAG) with conversation memory, using open source components, running locally (or not, whatever you prefer).
 
 ## 🧑‍💻 Development setup
 
