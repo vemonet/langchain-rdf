@@ -21,14 +21,10 @@ class OntologyLoader(BaseLoader):
         self.ontology_url = ontology_url
         self.format = format
         self.graph = Graph(store="Oxigraph")
+        self.graph.parse(self.ontology_url, format=self.format)
 
     def load(self) -> List[Document]:
         """Load and return documents (classes and properties) from the OWL ontology."""
-        if self.format:
-            self.graph.parse(self.ontology_url, format=self.format)
-        else:
-            self.graph.parse(self.ontology_url)
-
         # Extract classes and properties as documents
         docs: List[Document] = []
         for cls in self.graph.query(self._get_class_query()):
