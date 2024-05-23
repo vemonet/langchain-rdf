@@ -61,7 +61,9 @@ class OntologyLoader(BaseLoader):
                 ?uri a ?type ;
                     ?pred ?label .
                 FILTER (
-                    ?type = owl:Class
+                    ?type = owl:Class ||
+                    ?type = rdfs:Class ||
+                    ?type = owl:NamedIndividual
                 )
                 FILTER (
                     ?pred = rdfs:label ||
