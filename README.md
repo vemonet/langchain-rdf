@@ -16,7 +16,8 @@
 
 Loaders and utils to work with [RDF](https://www.w3.org/RDF/) data using [LangChain](https://python.langchain.com):
 
-* `OntologyLoader`: load OWL ontology in your vectorstore for Retrieval Augmented Generation
+* `OntologyLoader`: load OWL ontology classes and properties in your vectorstore
+* `SparqlExamplesLoader`: load SPARQL query examples to your vectorstore. SPARQL queries are retrieved from a SPARQL endpoint where they are stored using the SHACL ontology, with a human readable description.
 
 ## 📦️ Installation
 
@@ -28,20 +29,33 @@ pip install git+https://github.com/vemonet/langchain-rdf.git
 
 ## 🪄 Usage
 
-### 🐍 Use with python
+> [!NOTE]
+>
+> Refer to [LangChain documentation](https://python.langchain.com/v0.2/docs/) to figure out how to best integrate documents loaders to your stack, or check our complete notebook examples, using only open source components, running locally, with conversation memory:
+>
+> * [Notebook example of the OWL ontology loader](https://github.com/vemonet/langchain-rdf/blob/main/notebooks/rag_ontology.ipynb)
+> * [Notebook example of the SPARQL query examples loader](https://github.com/vemonet/langchain-rdf/blob/main/notebooks/rag_sparql.ipynb)
 
-Use this package in python scripts:
+### OWL ontology loader
 
 ```python
 from langchain_rdf import OntologyLoader
 
 loader = OntologyLoader("https://semanticscience.org/ontology/sio.owl", format="xml")
 documents = loader.load()
-print(documents)
+print(len(documents))
 ```
 
-> [!TIP]
-> Checkout [this notebook](https://github.com/vemonet/langchain-rdf/blob/main/tests/rag_ontology.ipynb) for a complete example of Retrieval Augmented Generation (RAG) with conversation memory, using open source components, running locally (or not, whatever you prefer).
+### SPARQL query examples
+
+```python
+from langchain_rdf import SparqlExamplesLoader
+
+loader = SparqlExamplesLoader("https://sparql.uniprot.org/sparql/")
+documents = loader.load()
+print(len(documents))
+```
+
 
 ## 🧑‍💻 Development setup
 
@@ -77,8 +91,6 @@ To display all logs when debugging:
 ```bash
 hatch run test -s
 ```
-
-
 
 ### ♻️ Reset the environment
 
