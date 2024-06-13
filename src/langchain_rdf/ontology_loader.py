@@ -16,7 +16,7 @@ class OntologyLoader(BaseLoader):
 
         Args:
             ontology_url (str): URL of the OWL ontology to be loaded.
-            format (str): FOrmat of the OWL ontology to be loaded.
+            format (str): Format of the OWL ontology to be loaded.
         """
         self.ontology_url = ontology_url
         self.format = format
